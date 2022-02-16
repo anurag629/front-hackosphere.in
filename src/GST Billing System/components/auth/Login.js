@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Login Component
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inputs, setInputs] = useState([]);
 
-  const submitForm = (e) => {
+  // method to handle form values on submit
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newEntry = { email: email, password: password };
     setInputs([...inputs, newEntry]);
@@ -19,7 +22,7 @@ const Login = () => {
       <p>
         or <Link to="/register">Create an account</Link>
       </p>
-      <form action="" onSubmit={submitForm}>
+      <form action="" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
           <input

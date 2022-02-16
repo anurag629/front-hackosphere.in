@@ -1,5 +1,7 @@
 import React from "react";
 
+//Email Confirmation Component(appears on submit of forget password)
+
 const ConfirmEmail = () => {
   return (
     <div>

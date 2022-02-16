@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+//Forget Password Component
+
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
-  const [store, setStore] = useState([]);
+  const [inputs, setInputs] = useState([]);
 
-  const submitForm = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newEntry = { email: email };
-    setStore([...store, newEntry]);
-    console.log(store);
+    setInputs([...inputs, newEntry]);
     setEmail("");
   };
 
@@ -18,7 +19,7 @@ const ForgetPassword = () => {
       <h5>Forgot your password?</h5>
       <p>Enter your email and we'll send you a reset link</p>
 
-      <form action="" onSubmit={submitForm}>
+      <form action="" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
