@@ -1,35 +1,34 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
-import ForgetPassword from "./common/auth/ForgetPassword";
-import Login from "./common/auth/Login";
-import Register from "./common/auth/Register";
-import RecoverPassword from "./common/auth/RecoverPassword";
-import UserProfile from "./common/dashboard/UserProfile";
-import Setting from "./common/dashboard/Setting";
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
-  return (
+import Home from './containers/auth/Home';
+import Login from './containers/auth/Login';
+import Activate from './containers/auth/Activate';
+import ResetPassword from './containers/auth/ResetPassword';
+import ResetPasswordConfirm from './containers/auth/ResetPasswordConfirm';
+import Signup from './containers/auth/Signup';
+
+import { Provider } from 'react-redux';
+import store from './store';
+
+import Layout from './hocs/Layout';
+
+const App = () => (
+  <Provider store={store}>
     <Router>
-      <div className="App">
+      <Layout>
         <Routes>
-          <Route exact path="/" element={<Login />}></Route>
-          <Route exact path="/register" element={<Register />}></Route>
-          <Route
-            exact
-            path="/forgetpassword"
-            element={<ForgetPassword />}
-          ></Route>
-          <Route
-            exact
-            path="/recoverpassword"
-            element={<RecoverPassword />}
-          ></Route>
-          <Route exact path="/userprofile" element={<UserProfile />}></Route>
-          <Route exact path="/settings" element={<Setting />}></Route>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/activate/:uid/:token' element={<Activate />} />
+          <Route exact path='/reset-password' element={<ResetPassword />} />
+          <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
+          <Route exact path='/signup' element={<Signup />} />
         </Routes>
-      </div>
+      </Layout>
     </Router>
-  );
-}
+  </Provider>
+
+);
 
 export default App;
