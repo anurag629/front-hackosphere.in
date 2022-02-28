@@ -7,7 +7,7 @@ const Layout = (props) => {
     useEffect(() => {
         props.checkAuthenticated();
         props.load_user();
-    }, []);
+    }, []);   // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>
